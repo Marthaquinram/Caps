@@ -8,10 +8,11 @@ eventPool.emit('startOrder');
 
 eventPool.addListener('pickUp', payload => {
   const date = Date.now();
+  const dateFormat = new Date(date).toUTCString();
   console.log(`
-        EVENT: {\n //<--- this means new line
+        EVENT: {\n
             event: "pickup",\n
-            time: "${date}",\n
+            time: "${dateFormat}",\n
             payload: {\n
                 store: "${payload.store}", \n
                 orderID: "${payload.orderID}", \n
@@ -24,10 +25,11 @@ eventPool.addListener('pickUp', payload => {
 
 eventPool.addListener('inTransit', payload => {
   const date = Date.now();
+  const dateFormat = new Date(date).toUTCString();
   console.log(`
-  EVENT: {\n //<--- this means new line
+  EVENT: {\n
   event: "pickup",\n
-  time: "${date}",\n
+  time: "${dateFormat}",\n
   payload: {\n
     store: "${payload.store}", \n
     orderID: "${payload.orderID}", \n
@@ -41,10 +43,11 @@ eventPool.addListener('inTransit', payload => {
 
 eventPool.addListener('delivered', payload => {
   const date = Date.now();
+  const dateFormat = new Date(date).toUTCString();
   console.log(`
-  EVENT: {\n //<--- this means new line
+  EVENT: {\n
   event: "pickup",\n
-  time: "${date}",\n
+  time: "${dateFormat}",\n
   payload: {\n
     store: "${payload.store}", \n
     orderID: "${payload.orderID}", \n
