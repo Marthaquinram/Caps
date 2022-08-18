@@ -28,7 +28,7 @@ eventPool.addListener('inTransit', payload => {
   const dateFormat = new Date(date).toUTCString();
   console.log(`
   EVENT: {\n
-  event: "pickup",\n
+  event: "in transit",\n
   time: "${dateFormat}",\n
   payload: {\n
     store: "${payload.store}", \n
@@ -46,7 +46,7 @@ eventPool.addListener('delivered', payload => {
   const dateFormat = new Date(date).toUTCString();
   console.log(`
   EVENT: {\n
-  event: "pickup",\n
+  event: "delivered",\n
   time: "${dateFormat}",\n
   payload: {\n
     store: "${payload.store}", \n
