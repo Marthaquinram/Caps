@@ -1,65 +1,65 @@
-'use strict';
+// 'use strict';
 
-const eventPool = require('./event-pool');
-require('./vendor');
-require('./driver');
+// const eventPool = require('./event-pool');
+// require('./vendor');
+// require('./driver');
 
-eventPool.emit('startOrder');
+// // eventPool.emit('startOrder');
 
-eventPool.addListener('pickUp', payload => {
-  const date = Date.now();
-  const dateFormat = new Date(date).toUTCString();
-  console.log(`
-        EVENT: {\n
-            event: "pickup",\n
-            time: "${dateFormat}",\n
-            payload: {\n
-                store: "${payload.store}", \n
-                orderID: "${payload.orderID}", \n
-                customer: "${payload.customer}", \n
-                address: "${payload.address}", \n
-            },
-        }`);
-});
-
-
-eventPool.addListener('inTransit', payload => {
-  const date = Date.now();
-  const dateFormat = new Date(date).toUTCString();
-  console.log(`
-  EVENT: {\n
-  event: "in transit",\n
-  time: "${dateFormat}",\n
-  payload: {\n
-    store: "${payload.store}", \n
-    orderID: "${payload.orderID}", \n
-    customer: "${payload.customer}", \n
-    address: "${payload.address}", \n
-  },
-}`);
-})
+// eventPool.addListener('pickUp', payload => {
+//   const date = Date.now();
+//   const dateFormat = new Date(date).toUTCString();
+//   console.log(`
+//         EVENT: {\n
+//             event: "pickup",\n
+//             time: "${dateFormat}",\n
+//             payload: {\n
+//                 store: "${payload.store}", \n
+//                 orderID: "${payload.orderID}", \n
+//                 customer: "${payload.customer}", \n
+//                 address: "${payload.address}", \n
+//             },
+//         }`);
+// });
 
 
+// eventPool.addListener('inTransit', payload => {
+//   const date = Date.now();
+//   const dateFormat = new Date(date).toUTCString();
+//   console.log(`
+//   EVENT: {\n
+//   event: "in transit",\n
+//   time: "${dateFormat}",\n
+//   payload: {\n
+//     store: "${payload.store}", \n
+//     orderID: "${payload.orderID}", \n
+//     customer: "${payload.customer}", \n
+//     address: "${payload.address}", \n
+//   },
+// }`);
+// })
 
-eventPool.addListener('delivered', payload => {
-  const date = Date.now();
-  const dateFormat = new Date(date).toUTCString();
-  console.log(`
-  EVENT: {\n
-  event: "delivered",\n
-  time: "${dateFormat}",\n
-  payload: {\n
-    store: "${payload.store}", \n
-    orderID: "${payload.orderID}", \n
-    customer: "${payload.customer}", \n
-    address: "${payload.address}", \n
-  },
-}`);
-})
 
-module.exports = {
-  eventPool
-}
+
+// eventPool.addListener('delivered', payload => {
+//   const date = Date.now();
+//   const dateFormat = new Date(date).toUTCString();
+//   console.log(`
+//   EVENT: {\n
+//   event: "delivered",\n
+//   time: "${dateFormat}",\n
+//   payload: {\n
+//     store: "${payload.store}", \n
+//     orderID: "${payload.orderID}", \n
+//     customer: "${payload.customer}", \n
+//     address: "${payload.address}", \n
+//   },
+// }`);
+// })
+
+// module.exports = {
+//   eventPool
+// }
 
 
 

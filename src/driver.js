@@ -1,34 +1,34 @@
-'use strict';
-const eventPool = require('./event-pool');
+// 'use strict';
+// const eventPool = require('./event-pool');
 
-eventPool.addListener('newOrder', pickUp);
-eventPool.addListener('pickUp', inTransit);
-eventPool.addListener('inTransit', delivered);
-// eventPool.addListener('delivered', inTransit);
+// socket.on('newOrder', pickUp);
+// socket.on('pickUp', inTransit);
+// socket.on('inTransit', delivered);
+// // eventPool.addListener('delivered', inTransit);
 
-function pickUp(payload) {
-  setTimeout(() => {
-    console.log(`DRIVER picked up: ${payload.orderID}`);
-    eventPool.emit('pickUp', payload);
-  }, 1000);
-}
+// function pickUp(payload) {
+//   setTimeout(() => {
+//     console.log(`DRIVER picked up: ${payload.orderID}`);
+//     socket.emit('pickUp', payload);
+//   }, 1000);
+// }
 
-function inTransit(payload) {
-  setTimeout(() => {
-    console.log(`DRIVER in transit: ${payload.orderID}`);
-    eventPool.emit('inTransit', payload);
-  }, 2000);
-}
+// function inTransit(payload) {
+//   setTimeout(() => {
+//     console.log(`DRIVER in transit: ${payload.orderID}`);
+//     socket.emit('inTransit', payload);
+//   }, 2000);
+// }
 
-function delivered(payload) {
-  setTimeout(() => {
-    console.log(`DRIVER delivered: ${payload.orderID}`);
-    eventPool.emit('delivered', payload);
-  }, 3000);
-}
+// function delivered(payload) {
+//   setTimeout(() => {
+//     console.log(`DRIVER delivered: ${payload.orderID}`);
+//     socket.emit('delivered', payload);
+//   }, 3000);
+// }
 
-module.exports = {
-  pickUp,
-  inTransit,
-  delivered
-}
+// module.exports = {
+//   pickUp,
+//   inTransit,
+//   delivered
+// }
