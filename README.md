@@ -5,12 +5,18 @@ Today, we will leverage the ability of Javascript to raise events, monitor event
 CAPS Phase 1: Begin the build of an application for a product called CAPS - The Code Academy Parcel Service. In this sprint, we’ll build out a system that emulates a real world supply chain. CAPS will simulate a delivery service where vendors (such a flower shops) will ship products using our delivery service and when our drivers deliver them, each vendor will be notified that their customers received what they purchased.
 This will be an event driven application that “distributes” the responsibility for logging to separate modules, using only events to trigger logging based on activity.
 
+# Phase 2
+In Phase 2, we’ll be changing the underlying networking implementation of our CAPS system from using node events to using a library called Socket.io so that clients can communicate over a network. Socket.io manages the connection pool for us, making broadcasting much easier to operate, and works well both on the terminal (between servers) and with web clients.
+
+The core functionality we’ve already built remains the same. The difference in this phase is that we’ll be creating a networking layer. As such, the user stories that speak to application functionality remain unchanged, but our developer story changes to reflect the work needed for refactoring.
+
+
 ### Pull Request
 
 - Lab11 PR
   - <https://github.com/Marthaquinram/Caps/pull/1>
 - Lab12 PR
-  -
+  - <https://github.com/Marthaquinram/Caps/pull/5>
 
 ### UML
  ![UML](UML.png)
@@ -18,11 +24,11 @@ This will be an event driven application that “distributes” the responsibili
 
 # Starting up
 
-- Lab 11 instruction
+## Lab 11 instruction
   - In terminal run npm i to install dependencies and then run npm test to run all test.
   - npm i jest express chance nodemon.
   - in terminal run node src/caps.js to see logs of orders being picked up, in transit and delivered.
-- Lab 12 Instructions
+## Lab 12 Instructions
   - In terminal run npm i socket.io socket.io-client
   - in caps file require
     - const socketIo = require("socket.io");
