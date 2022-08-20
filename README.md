@@ -10,6 +10,12 @@ In Phase 2, we’ll be changing the underlying networking implementation of our 
 
 The core functionality we’ve already built remains the same. The difference in this phase is that we’ll be creating a networking layer. As such, the user stories that speak to application functionality remain unchanged, but our developer story changes to reflect the work needed for refactoring.
 
+# Phase 3
+CAPS Phase 3: Complete work on a multi-day build of our delivery tracking system, adding queued delivery.
+
+In this phase, we are going to implement a system to guarantee that notification payloads are read by their intended subscriber. Rather than just triggering an event notification and hope that client applications respond, we’re going to implement a “Queue” system so that nothing gets lost. Every event sent will be logged and held onto by the server until the intended recipient acknowledges that they received the message. At any time, a subscriber can get all of the messages they might have missed.
+
+In this final phase, we’ll be implementing a “Queue” feature on the Server, allowing Driver and Vendor clients to subscribe to messages added to pickup and delivered queues.
 
 ### Pull Request
 
@@ -17,14 +23,17 @@ The core functionality we’ve already built remains the same. The difference in
   - <https://github.com/Marthaquinram/Caps/pull/1>
 - Lab12 PR
   - <https://github.com/Marthaquinram/Caps/pull/5>
+  - Lab13 PR
+    -
 
 ### UML
  ![UML](UML.png)
 
 
+
 # Starting up
 
-## Lab 11 instruction
+## Lab 11 Instruction
   - In terminal run npm i to install dependencies and then run npm test to run all test.
   - npm i jest express chance nodemon.
   - in terminal run node src/caps.js to see logs of orders being picked up, in transit and delivered.
@@ -41,6 +50,9 @@ The core functionality we’ve already built remains the same. The difference in
   - in driver1.js bring in
     - const { io } = require('socket.io-client');
     - const socket = io('ws://localhost:3500');
+## Lab 13 Instructions
+  -
+
 
 #### Notes
 

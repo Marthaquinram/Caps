@@ -43,3 +43,12 @@ function consoleEvents(payload, str) {
     },
   } `);
 }
+
+
+// const { createClient } = require("redis");
+// const { createAdapter } = require("@socket.io/redis-adapter");
+
+// const pubClient = createClient({ url: "redis://localhost:6379" });
+// const subClient = pubClient.duplicate();
+
+// io.adapter(createAdapter(pubClient, subClient));
