@@ -3,9 +3,6 @@ const chance = require("chance");
 const Chance = chance();
 const socket = io('ws://localhost:3500');
 
-// socket.on('startOrder', newPackage);
-// eventPool.addListener('delivered', delivered);
-
 function newPackage() {
   setInterval(() => {
     let store = Chance.company();
@@ -15,24 +12,27 @@ function newPackage() {
     let state = Chance.state();
     let alert = '';
 
-    let orders = {
+    let payload = {
       store: store,
       orderID: orderId,
       customer: customerName,
       address: city + ', ' + state,
       status: alert
     }
-    socket.emit('newOrder', orders)
+    socket.emit('newOrder', payload)
 
 
-  }, 10000);
+  }, 12000);
 }
 
-function delivered(payload) {
+
+socket.on('Confirmation-delivered', (payload) => {
   setTimeout(() => {
-    console.log(`Thank you: ${payload.customer}`);
+    console.log('Thank you:', payload.customer);
 
-  }, 1000);
-}
+  }, 3500);
+});
+
+
+
 newPackage();
-delivered();
