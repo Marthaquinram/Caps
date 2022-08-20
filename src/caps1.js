@@ -1,41 +1,45 @@
 const socketIo = require("socket.io");
-const io = socketIo(3500);
-// const { pickUp, inTransit, delivered } = require('./driver1');
+const io = require('./event-io');
+
 
 
 io.on("connection", (client) => {
 
 
-  client.on('newOrder', (pickUp) => {
-    consoleEvents(pickUp, 'pickUp');
-    io.emit('orderForDriver', pickUp);
-
+  client.on('newOrder', (payload) => {
+    consoleEvents(payload, 'pickUp');
+    io.emit('orderForDriver', payload);
   });
 
   client.on('pickUp', (payload) => {
-    // consoleEvents(inTransit, 'pickUp');
-    // console.log('EVENT', pickUp);
+    io.emit('inTransit', payload);
   });
 
-
+  client.on('Driver-inTransit', (payload) => {
+    consoleEvents(payload, 'inTransit');
+    io.emit('Driver-delivered', payload);
+  });
+  client.on('delivered', (payload) => {
+    setTimeout(() => {
+      consoleEvents(payload, 'delivered');
+    }, 2000);
+    io.emit('Confirmation-delivered', payload);
+  });
 
 
 });
 function consoleEvents(payload, str) {
   const date = Date.now();
-  // const dateFormat = new Date(date).toUTCString();
-  console.log('WE ARE HEREEEEEEE', payload);
-  // console.log(`
-  // EVENT: {\n
-  //   event: "${str}",\n
-  //   time: "${dateFormat}",\n
-  //   payload: {\n
-  //     store: "${payload.store}", \n
-  //     orderID: "${payload.orderID}", \n
-  //     customer: "${payload.customer}", \n
-  //     address: "${payload.address}", \n
-  //   },
-  // } `);
+  const dateFormat = new Date(date).toUTCString();
+  console.log(`
+  EVENT: {\n
+    event: "${str}",\n
+    time: "${dateFormat}",\n
+    payload: {\n
+      store: "${payload.store}", \n
+      orderID: "${payload.orderID}", \n
+      customer: "${payload.customer}", \n
+      address: "${payload.address}", \n
+    },
+  } `);
 }
-// client.on('pickUp', inTransit);
-  // client.on('inTransit', delivered);
