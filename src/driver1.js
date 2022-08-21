@@ -1,5 +1,5 @@
 const { io } = require('socket.io-client');
-const socket = io('ws://localhost:3500');
+const socket = io('ws://localhost:3500/driver');
 
 
 socket.on('orderForDriver', (payload) => {

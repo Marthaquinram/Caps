@@ -1,8 +1,17 @@
 const socketIo = require("socket.io");
 const io = require('./event-io');
+// const caps1 = require('./event-io');
+// const vendors = caps1.of('./vendor1');
+// const drivers = caps1.of('./vendor1');
 
+// io.sockets === io.of("/")
+// io.of("/vendors").on("connection", (socket) => {
 
+// });
 
+// io.of("/drivers").on("connection", (socket) => {
+
+// });
 io.on("connection", (client) => {
 
 
