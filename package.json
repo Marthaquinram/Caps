@@ -6,10 +6,7 @@
   "scripts": {
     "test": "test",
     "start": "node src/caps1.js",
-    "dev": "nodemon src/caps1.js",
-    "driver1": "node ./src/driver1.js",
-    "vendor1": "node ./src/vendor1.js",
-    "caps1": "node ./src/caps1.js"
+    "dev": "nodemon src/caps1.js"
   },
   "repository": {
     "type": "git",
