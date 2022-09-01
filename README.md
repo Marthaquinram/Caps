@@ -51,13 +51,14 @@ In this final phase, we’ll be implementing a “Queue” feature on the Server
     - const { io } = require('socket.io-client');
     - const socket = io('ws://localhost:3500');
 ## Lab 13 Instructions
-  -
+  - CAPS Phase 3: Complete work on a multi-day build of our delivery tracking system, adding queued delivery
 
 
 #### Notes
 
 - lab 11 almost completed, working on UML and testing.
 - Completed lab 12 but havent done testing.
+- Complete most of lab 13 i got everything working refactored, but i dont know if my queueu is working.
 
 #### Collaborators
 - Tony R., Sarah T., Danny C.

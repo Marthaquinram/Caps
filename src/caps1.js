@@ -64,9 +64,3 @@ function consoleEvents(payload, str) {
     },
   } `);
 }
-
-// TODO:
-
- // - As a driver, I want to “subscribe” to “pickup” notifications so that I know what packages to deliver.
-  // - As a driver, I want to “catch up” on any “pickup” notifications I may have missed so that I can deliver everything.
-  // - As a driver, I want a way to “scan” a delivery so that the vendors know when a package has been delivered.
