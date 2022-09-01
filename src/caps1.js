@@ -1,42 +1,54 @@
 const socketIo = require("socket.io");
 const io = require('./event-io');
 // const caps1 = require('./event-io');
-// const vendors = caps1.of('./vendor1');
-// const drivers = caps1.of('./vendor1');
+const vendors = io.of('/vendor1');
+const drivers = io.of('/driver1');
 
-// io.sockets === io.of("/")
-// io.of("/vendors").on("connection", (socket) => {
+// let vendorQueue = [];
+// let driverQueue = [];
 
-// });
-
-// io.of("/drivers").on("connection", (socket) => {
-
-// });
 io.on("connection", (client) => {
 
 
-  client.on('newOrder', (payload) => {
+});
+// connection to vendor-io
+vendors.on("connection", (vendor) => {
+
+  vendor.on('newOrder', (payload) => {
+    console.log('SocketID:', vendor.id);
+    console.log('creating new room for ', payload.store);
+    vendor.join(payload.store);
     consoleEvents(payload, 'pickUp');
-    io.emit('orderForDriver', payload);
+    drivers.emit('orderForDriver', payload);
   });
 
-  client.on('pickUp', (payload) => {
-    io.emit('inTransit', payload);
-  });
+});
 
-  client.on('Driver-inTransit', (payload) => {
+
+// connection to driver-io
+drivers.on("connection", (driver) => {
+
+  driver.on('pickUp', (payload) => {
+    driver.emit('inTransit', payload);
+  });
+  driver.on('Driver-inTransit', (payload) => {
     consoleEvents(payload, 'inTransit');
-    io.emit('Driver-delivered', payload);
+    driver.emit('Driver-delivered', payload);
   });
-  client.on('delivered', (payload) => {
+
+
+  driver.on('delivered', (payload) => {
     setTimeout(() => {
       consoleEvents(payload, 'delivered');
     }, 2000);
-    io.emit('Confirmation-delivered', payload);
+    vendors.emit('Confirmation-delivered', payload);
   });
 
-
 });
+
+
+
+
 function consoleEvents(payload, str) {
   const date = Date.now();
   const dateFormat = new Date(date).toUTCString();
@@ -52,12 +64,3 @@ function consoleEvents(payload, str) {
     },
   } `);
 }
-
-
-// const { createClient } = require("redis");
-// const { createAdapter } = require("@socket.io/redis-adapter");
-
-// const pubClient = createClient({ url: "redis://localhost:6379" });
-// const subClient = pubClient.duplicate();
-
-// io.adapter(createAdapter(pubClient, subClient));
